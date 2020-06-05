@@ -15,7 +15,7 @@ class KeyGeneratorTest < MiniTest::Test
   def test_it_generates_random_number
     keygen = KeyGenerator.new
 
-    keygen.expects(:generate_key).returns('00357')
+    keygen.expects(:rand).returns('00357')
     assert_equal '00357', keygen.generate_key
   end
 end

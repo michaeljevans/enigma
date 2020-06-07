@@ -10,8 +10,13 @@ class Cryptographer
   end
 
   def alter_character(character, shifts, index)
-    character if @alphabet.include?(character) == false
-    character = rotate_character(character, shifts[index]) if @alphabet.include?(character) == true
-    character
+    return character if @alphabet.include?(character) == false
+    character = rotate_character(character, shifts[index])
+  end
+
+  def rotate_index(index, shifts)
+    index += 1
+    return 0 if index == shifts.count
+    index
   end
 end

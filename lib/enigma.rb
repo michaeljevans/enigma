@@ -9,4 +9,11 @@ class Enigma
     @today  = Date.today.strftime('%d%m%y')
     @crypto = Cryptographer.new
   end
+
+  def encrypt(message, key=0, date=@today)
+    key = KeyGenerator.new.generate_key if key == 0
+    shifts = ShiftGenerator.new(key, date).generate_shifts
+    encrypted_message = @crypto.crypt(message, shifts)
+    {encryption: encrypted_message, key: key, date: date}
+  end
 end

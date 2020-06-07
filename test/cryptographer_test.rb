@@ -37,4 +37,11 @@ class CryptographerTest < Minitest::Test
     assert_equal 3, index = @crypto.rotate_index(index, @shifts)
     assert_equal 0, index = @crypto.rotate_index(index, @shifts)
   end
+
+  def test_it_encrypts_message
+    message   = 'hello world'
+    encrypted = 'keder ohulw'
+
+    assert_equal encrypted, @crypto.crypt(message, @shifts)
+  end
 end

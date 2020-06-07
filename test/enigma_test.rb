@@ -17,4 +17,12 @@ class EnigmaTest < Minitest::Test
     # Tested on 2020-06-07
     assert_equal '070620', @enigma.today
   end
+
+  def test_it_can_encrypt_messages
+    message   = 'hello world'
+    encrypted = 'keder ohulw'
+    expected  = {encryption: encrypted, key: '02715', date: '040895'}
+
+    assert_equal expected, @enigma.encrypt(message, '02715', '040895')
+  end
 end

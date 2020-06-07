@@ -6,19 +6,19 @@ require './lib/shift_generator'
 
 class ShiftGeneratorTest < MiniTest::Test
   def setup
-    @shift_generator = ShiftGenerator.new('00357', '060620')
+    @shiftgen = ShiftGenerator.new('00357', '060620')
   end
 
   def test_it_exists
-    assert_instance_of ShiftGenerator, @shift_generator
+    assert_instance_of ShiftGenerator, @shiftgen
   end
 
   def test_it_has_readable_attributes
-    assert_equal '00357', @shift_generator.key
-    assert_equal '060620', @shift_generator.date
-    assert_equal 4, @shift_generator.a_shift
-    assert_equal 7, @shift_generator.b_shift
-    assert_equal 35, @shift_generator.c_shift
-    assert_equal 57, @shift_generator.d_shift
+    assert_equal '00357', @shiftgen.key
+    assert_equal '060620', @shiftgen.date
+  end
+
+  def test_it_can_generate_shifts
+    assert_equal [4, 7, 35, 57], @shiftgen.generate_shifts
   end
 end

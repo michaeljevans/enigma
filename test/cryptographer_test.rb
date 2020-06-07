@@ -28,4 +28,13 @@ class CryptographerTest < Minitest::Test
     assert_equal 'u', @crypto.alter_character('r', @shifts, 0)
     assert_equal '!', @crypto.alter_character('!', @shifts, @shifts.sample)
   end
+
+  def test_it_rotates_shift_index
+    index = 0
+
+    assert_equal 1, index = @crypto.rotate_index(index, @shifts)
+    assert_equal 2, index = @crypto.rotate_index(index, @shifts)
+    assert_equal 3, index = @crypto.rotate_index(index, @shifts)
+    assert_equal 0, index = @crypto.rotate_index(index, @shifts)
+  end
 end

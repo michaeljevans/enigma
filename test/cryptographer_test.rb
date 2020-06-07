@@ -40,9 +40,11 @@ class CryptographerTest < Minitest::Test
 
   def test_it_encrypts_message
     message   = 'hello world'
+    message_2 = 'HELLO WORLD'
     encrypted = 'keder ohulw'
 
     assert_equal encrypted, @crypto.crypt(message, @shifts)
+    assert_equal encrypted, @crypto.crypt(message_2, @shifts)
   end
 
   def test_it_decrypts_message

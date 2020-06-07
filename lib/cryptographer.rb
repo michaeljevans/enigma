@@ -4,6 +4,15 @@ class Cryptographer
     @alphabet = ("a".."z").to_a << " "
   end
 
+  def crypt(message, shifts)
+    index = 0
+    altered_message = message.chars.inject('') do |acc, character|
+      acc += alter_character(character, shifts, index)
+      index = rotate_index(index, shifts)
+      acc
+    end
+  end
+
   def rotate_character(character, shift)
     index = @alphabet.index(character)
     @alphabet.rotate(shift)[index]

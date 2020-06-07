@@ -1,0 +1,3 @@
+class Cryptographer
+
+end

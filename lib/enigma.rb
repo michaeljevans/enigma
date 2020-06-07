@@ -16,4 +16,10 @@ class Enigma
     encrypted_message = @crypto.crypt(message, shifts)
     {encryption: encrypted_message, key: key, date: date}
   end
+
+  def decrypt(ciphertext, key, date=@today)
+    shifts = ShiftGenerator.new(key, date).generate_shifts
+    decrypted_message = @crypto.crypt(ciphertext, shifts.map {|shift| -shift})
+    {decryption: decrypted_message, key: key, date: date}
+  end
 end

@@ -6,7 +6,8 @@ class Cryptographer
 
   def crypt(message, shifts)
     index = 0
-    altered_message = message.chars.inject('') do |acc, character|
+    message = message.downcase.chars
+    altered_message = message.inject('') do |acc, character|
       acc += alter_character(character, shifts, index)
       index = rotate_index(index, shifts)
       acc

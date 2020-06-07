@@ -15,8 +15,7 @@ class Cryptographer
   end
 
   def rotate_character(character, shift)
-    index = @alphabet.index(character)
-    @alphabet.rotate(shift)[index]
+    @alphabet.rotate(shift)[@alphabet.index(character)]
   end
 
   def alter_character(character, shifts, index)

@@ -1,6 +1,7 @@
 require_relative 'shift_generator'
 require_relative 'key_generator'
 require_relative 'cryptographer'
+require_relative 'shift_finder'
 require 'date'
 
 class Enigma
@@ -21,5 +22,11 @@ class Enigma
     shifts = ShiftGenerator.new(key, date).generate_shifts
     decrypted_message = @crypto.crypt(ciphertext, shifts.map {|shift| -shift})
     {decryption: decrypted_message, key: key, date: date}
+  end
+
+  def crack(ciphertext, date=@today)
+    shifts = ShiftFinder.new(ciphertext, date).find_shifts
+    decrypted_message = @crypto.crypt(ciphertext, shifts)
+    {decryption: decrypted_message, key: shifts.join('-'), date: date}
   end
 end

@@ -16,9 +16,10 @@ class ShiftFinderTest < Minitest::Test
   def test_it_has_readable_attributes
     assert_equal 'rmguyhrxatziovz', @shift_finder.ciphertext
     assert_equal '080620', @shift_finder.date
+    assert_equal ("a".."z").to_a << " ", @shift_finder.alphabet
   end
 
   def test_it_can_find_shifts
-    assert_equal [10, 8, 22, -18], @shift_finder.find_shifts
+    assert_equal [-10, -8, -22, 18], @shift_finder.find_shifts
   end
 end

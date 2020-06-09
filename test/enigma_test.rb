@@ -54,6 +54,12 @@ class EnigmaTest < Minitest::Test
     decrypted = 'hello world'
     expected  = {decryption: decrypted, key: '23838', date: '080620'}
 
-    assert_equal expected, @enigma.decrypt(encrypted, '23838', '080620')
+    assert_equal expected, @enigma.decrypt(encrypted, '23838')
+  end
+
+  def test_it_can_crack_encrypted_messages
+    encrypted = 'zofqfjqtivyewxy'
+
+    assert_equal 'hello world end', @enigma.crack(encrypted)[:decryption]
   end
 end

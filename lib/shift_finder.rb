@@ -11,11 +11,7 @@ class ShiftFinder
                         (@ciphertext.length - 3) => (@alphabet.index('e') - @alphabet.index(@ciphertext[@ciphertext.length - 3])),
                         (@ciphertext.length - 2) => (@alphabet.index('n') - @alphabet.index(@ciphertext[@ciphertext.length - 2])),
                         (@ciphertext.length - 1) => (@alphabet.index('d') - @alphabet.index(@ciphertext[@ciphertext.length - 1]))}
-    shift_order = positions_shifts.sort_by do |position, shift|
-      position % 4
-    end
-    shifts = shift_order.map do |shift|
-      shift.last
-    end
+    shift_order = positions_shifts.sort_by {|position, _| position % 4}
+    shifts = shift_order.map {|shift| shift.last}
   end
 end
